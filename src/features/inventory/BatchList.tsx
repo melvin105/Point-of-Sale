@@ -1,20 +1,12 @@
 import { Table } from '../../components/common/Table'
 import { Badge } from '../../components/common/Badge'
-
-interface Batch {
-  id: string
-  batchNumber: string
-  expiryDate: string
-  quantity: number
-  riskLevel: 'low' | 'medium' | 'high' | 'critical'
-}
+import { batches, type Batch } from '../../data/inventory'
 
 interface BatchListProps {
   itemId: string
 }
 
 export function BatchList({ itemId }: BatchListProps) {
-  const batches: Batch[] = []
 
   const columns = [
     {

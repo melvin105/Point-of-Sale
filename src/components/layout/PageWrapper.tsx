@@ -1,9 +1,12 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { LeftSidebar } from './LeftSidebar'
 import { NotificationsSidebar } from './NotificationsSidebar'
 import { MainTopbar } from './MainTopbar'
 
 export function PageWrapper() {
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
+
   return (
     <div className="flex h-screen bg-gray-50">
       <LeftSidebar />
@@ -13,7 +16,7 @@ export function PageWrapper() {
           <Outlet />
         </main>
       </div>
-      <NotificationsSidebar />
+      {isHomePage && <NotificationsSidebar />}
     </div>
   )
 }

@@ -1,11 +1,8 @@
 import { Badge } from '../../components/common/Badge'
+import { recentAlerts } from '../../data/alerts'
 
 export function RecentAlerts() {
-  const alerts = [
-    { id: 1, message: 'Product XYZ expires in 3 days', severity: 'high', time: '2 hours ago' },
-    { id: 2, message: 'Low stock alert for Product ABC', severity: 'medium', time: '5 hours ago' },
-    { id: 3, message: 'Batch #1234 expired', severity: 'critical', time: '1 day ago' },
-  ]
+  const alerts = recentAlerts
 
   return (
     <div className="bg-white p-6 rounded-lg border border-gray-200">

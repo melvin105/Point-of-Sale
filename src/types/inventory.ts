@@ -3,6 +3,8 @@ export type InventoryItem = {
   name: string
   sku: string
   quantity: number
+  price: number
+  department: string
   expiryRisk: 'low' | 'medium' | 'high' | 'critical'
   batches?: Batch[]
 }

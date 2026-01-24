@@ -1,43 +1,5 @@
 import { Bell, AlertTriangle, Info, CheckCircle, X } from 'lucide-react'
-
-interface Notification {
-  id: string
-  type: 'warning' | 'info' | 'success' | 'alert'
-  title: string
-  message: string
-  time: string
-}
-
-const notifications: Notification[] = [
-  {
-    id: '1',
-    type: 'warning',
-    title: 'Expiry Alert',
-    message: '5 items expiring within 7 days',
-    time: '2 mins ago',
-  },
-  {
-    id: '2',
-    type: 'alert',
-    title: 'Low Stock',
-    message: 'Milk products running low',
-    time: '15 mins ago',
-  },
-  {
-    id: '3',
-    type: 'info',
-    title: 'Price Update',
-    message: 'Price changes for 3 items',
-    time: '1 hour ago',
-  },
-  {
-    id: '4',
-    type: 'success',
-    title: 'Sync Complete',
-    message: 'Inventory sync completed',
-    time: '2 hours ago',
-  },
-]
+import { notifications } from '../../data/notifications'
 
 const getNotificationIcon = (type: string) => {
   switch (type) {
@@ -81,7 +43,7 @@ export function NotificationsSidebar() {
             className="px-4 py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer group"
           >
             <div className="flex gap-3">
-              <div className="flex-shrink-0 mt-0.5">
+              <div className="shrink-0 mt-0.5">
                 {getNotificationIcon(notification.type)}
               </div>
               <div className="flex-1 min-w-0">
@@ -112,5 +74,6 @@ export function NotificationsSidebar() {
     </aside>
   )
 }
+
 
 

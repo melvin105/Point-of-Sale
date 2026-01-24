@@ -1,4 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import {
+  AlertTriangle,
+  Activity,
+  Gauge,
+  Layers,
+  TrendingDown,
+  LineChart,
   ClipboardList,
   ShoppingCart,
   History,
@@ -8,22 +15,14 @@ import {
   Calendar,
   Award,
   Package,
-  Truck,
   Clock,
   Box,
   FileCheck,
   Edit3,
-  Store,
   Menu,
-  CheckCircle,
   BarChart3,
   Clipboard,
-  Monitor,
   Settings,
-  Bell,
-  ClipboardCheck,
-  FileBarChart,
-  DollarSign,
   Smartphone,
   Building2,
   CreditCard,
@@ -136,44 +135,44 @@ const menuSections: MenuSection[] = [
     title: 'IEDMS',
     items: [
       {
-        icon: <CheckCircle size={32} />,
-        label: 'Automated Expiry Date Tracking',
+        icon: <Clock size={32} />,
+        label: 'Expiry Monitoring',
         path: '/expiry-tracking',
       },
       {
-        icon: <BarChart3 size={32} />,
-        label: 'Data Analytics',
+        icon: <Activity size={32} />,
+        label: 'Expiry Risk Analytics',
         path: '/data-analytics',
       },
       {
-        icon: <Monitor size={32} />,
-        label: 'Inventory Monitor',
+        icon: <Gauge size={32} />,
+        label: 'Real-Time Inventory Status',
         path: '/inventory-monitor',
       },
       {
-        icon: <Settings size={32} />,
-        label: 'System Settings and Configuration',
-        path: '/settings',
-      },
-      {
-        icon: <Bell size={32} />,
-        label: 'Expiry Date Alerts',
+        icon: <AlertTriangle size={32} />,
+        label: 'Expiry Risk Alerts',
         path: '/expiry-alerts',
       },
       {
-        icon: <ClipboardCheck size={32} />,
-        label: 'Product Checklist and Details',
+        icon: <Layers size={32} />,
+        label: 'Batch & Shelf-Life Details',
         path: '/product-checklist',
       },
       {
-        icon: <FileBarChart size={32} />,
-        label: 'Reports and Documentation',
+        icon: <TrendingDown size={32} />,
+        label: 'Expiry Impact Reports',
         path: '/reports-docs',
       },
       {
-        icon: <DollarSign size={32} />,
-        label: 'Cost Savings and Financial Impact',
+        icon: <LineChart size={32} />,
+        label: 'Waste & Cost Impact',
         path: '/financial-impact',
+      },
+      {
+        icon: <Settings size={32} />,
+        label: 'System Settings',
+        path: '/settings',
       },
     ],
   },
@@ -215,9 +214,11 @@ const operationsSection: MenuSection = {
   ],
 }
 
+
 export function HomePage() {
+  const navigate = useNavigate()
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col min-h-full">
       <div className="flex-1 flex gap-4 py-2 px-2">
         {/* Left Column - Main Sections */}
         <div className="flex-1 flex flex-col justify-evenly gap-2">
@@ -241,13 +242,15 @@ export function HomePage() {
                 {section.items.map((item) => (
                   <button
                     key={item.path}
-                    onClick={() => {
-                      // Navigation will be handled later
-                      console.log('Navigate to:', item.path)
-                    }}
+                    onClick={() => navigate(item.path)}
                     className="flex flex-col items-center justify-center gap-1.5 py-2 px-2 hover:bg-blue-50 rounded-lg transition-all duration-200 group"
                   >
-                    <div className="text-gray-700 group-hover:text-blue-600 transition-colors">
+                    <div
+                      className={`${section.title === 'IEDMS'
+                        ? 'text-indigo-900 group-hover:text-indigo-700'
+                        : 'text-gray-700 group-hover:text-blue-600'
+                        } transition-colors`}
+                    >
                       {item.icon}
                     </div>
                     <span className="text-gray-900 text-[10px] font-medium text-center leading-tight">
@@ -281,10 +284,7 @@ export function HomePage() {
               {operationsSection.items.map((item) => (
                 <button
                   key={item.path}
-                  onClick={() => {
-                    // Navigation will be handled later
-                    console.log('Navigate to:', item.path)
-                  }}
+                  onClick={() => navigate(item.path)}
                   className="flex flex-col items-center justify-center gap-1.5 py-2 px-2 hover:bg-blue-50 rounded-lg transition-all duration-200 group"
                 >
                   <div className="text-gray-700 group-hover:text-blue-600 transition-colors">

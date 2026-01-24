@@ -1,17 +1,7 @@
 import { AlertCard } from './AlertCard'
+import { alerts } from '../../data/alerts'
 
 export function AlertsPage() {
-  const alerts = [
-    {
-      id: 1,
-      type: 'expiry',
-      severity: 'critical',
-      message: 'Product XYZ expires in 2 days',
-      productName: 'Product XYZ',
-      expiryDate: '2024-01-15',
-      batchNumber: 'BATCH-001',
-    },
-  ]
 
   return (
     <div className="space-y-6">
